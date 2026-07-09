@@ -28,11 +28,19 @@
 
   <!-- ===================== HERO SECTION ===================== -->
   <section class="hero" id="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-particles" id="hero-particles"></div>
+    <!-- Video Background Container -->
+    <div class="hero-video-bg">
+      <div class="video-overlay"></div>
+      <!-- Placeholder para o seu vídeo final -->
+      <video autoplay loop muted playsinline id="bg-video">
+        <!-- Coloque o caminho do seu vídeo mp4 aqui quando estiver pronto -->
+        <source src="bg-implant-video.mp4" type="video/mp4" />
+      </video>
+    </div>
+    
     <div class="container hero-inner">
-      <div class="hero-content">
-        <div class="hero-badge">
+      <div class="hero-content centered-hero-content">
+        <div class="hero-badge centered-badge">
           <span class="badge-dot"></span>
           Planning Center Digital para Implantodontia
         </div>
@@ -43,7 +51,7 @@
         <p class="hero-subheadline">
           O <strong>Scavassini Team Guided</strong> é o Planning Center que transforma seus casos complexos em cirurgias previsíveis. Você nos envia os exames — nós devolvemos o planejamento cirúrgico digital <strong>completo e pronto para execução</strong>.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions centered-actions">
           <a href="https://tally.so/r/81Wdao" target="_blank" rel="noopener" class="btn btn-primary btn-lg" id="hero-cta-btn">
             <span>Quero Otimizar Minhas Cirurgias</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -53,7 +61,7 @@
             Ver como funciona
           </a>
         </div>
-        <div class="hero-stats">
+        <div class="hero-stats centered-stats">
           <div class="stat-item">
             <span class="stat-number">100%</span>
             <span class="stat-label">Digital & Remoto</span>
@@ -70,69 +78,7 @@
           </div>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="visual-card main-card">
-          <div class="card-header">
-            <div class="card-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <span class="card-title-label">Planning Center · Caso #247</span>
-          </div>
-          <div class="card-body">
-            <div class="scan-viz">
-              <div class="scan-line"></div>
-              <div class="jaw-outline">
-                <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%">
-                  <path d="M20 30 Q100 80 180 30" stroke="#1E88E5" stroke-width="2" fill="none" opacity="0.6"/>
-                  <path d="M30 35 Q100 90 170 35" stroke="#00BFA5" stroke-width="1.5" fill="none" opacity="0.4"/>
-                  <!-- Implant markers -->
-                  <circle cx="65" cy="52" r="6" fill="#1E88E5" opacity="0.8"/>
-                  <circle cx="100" cy="62" r="6" fill="#00BFA5" opacity="0.9"/>
-                  <circle cx="135" cy="52" r="6" fill="#1E88E5" opacity="0.8"/>
-                  <!-- Guide lines -->
-                  <line x1="65" y1="46" x2="65" y2="30" stroke="#1E88E5" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
-                  <line x1="100" y1="56" x2="100" y2="35" stroke="#00BFA5" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
-                  <line x1="135" y1="46" x2="135" y2="30" stroke="#1E88E5" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>
-                  <!-- Angle indicators -->
-                  <text x="55" y="27" fill="#00BFA5" font-size="8" font-family="monospace">12°</text>
-                  <text x="90" y="32" fill="#00BFA5" font-size="8" font-family="monospace">0°</text>
-                  <text x="125" y="27" fill="#00BFA5" font-size="8" font-family="monospace">12°</text>
-                </svg>
-              </div>
-            </div>
-            <div class="card-metrics">
-              <div class="metric">
-                <span class="metric-label">Angulação</span>
-                <span class="metric-val ok">Aprovada ✓</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">Tecido ósseo</span>
-                <span class="metric-val ok">Adequado ✓</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">Guia Cirúrgico</span>
-                <span class="metric-val ready">Pronto ✓</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="floating-badge badge-left">
-          <span class="fb-icon">🎯</span>
-          <div>
-            <strong>Planejamento Aprovado</strong>
-            <small>Pronto para cirurgia</small>
-          </div>
-        </div>
-        <div class="floating-badge badge-right">
-          <span class="fb-icon">⚡</span>
-          <div>
-            <strong>Fluxo 100% Digital</strong>
-            <small>Remoto & Rápido</small>
-          </div>
-        </div>
-      </div>
     </div>
-
   </section>
 
   <!-- ===================== DOR / PROBLEMA ===================== -->
@@ -287,7 +233,7 @@
               </svg>
             </div>
             <h3>Você Envia os Exames</h3>
-            <p>Encaminhe as imagens de tomografia computadorizada (CBCT) e o arquivo do escaneamento intraoral do seu paciente através do nosso formulário digital seguro.</p>
+            <p>Encaminhe o arquivo DICOM de tomografia computadorizada (CBCT) e o arquivo do escaneamento intraoral do seu paciente através do nosso formulário digital seguro.</p>
             <div class="step-detail">Tomografia (CBCT) + Escaneamento Intraoral</div>
           </div>
           <!-- Step 2 -->
@@ -339,6 +285,46 @@
           <span>Quero Otimizar Minhas Cirurgias</span>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CASOS REAIS / GALERIA DE PRECISÃO ===================== -->
+  <section class="gallery-section section-pad" id="casos-reais">
+    <div class="container">
+      <div class="section-header center">
+        <div class="section-tag">Casos Reais</div>
+        <h2 class="section-title">Previsibilidade e Precisão na Prática</h2>
+        <p class="section-sub">Veja o resultado físico e clínico do nosso planejamento digital. Do guia impresso à execução perfeita em boca.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+            <img src="guia-cirurgico-3d.jpg" alt="Guia Cirúrgico Impresso 3D" class="gallery-img" />
+          </div>
+          <div class="gallery-info">
+            <h4>01. O Guia Cirúrgico Impresso</h4>
+            <p>Guia prototipado em resina biocompatível de altíssima definição com anilhas metálicas para direcionamento preciso da fresa.</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+            <img src="guia-cirurgico-boca.jpg" alt="Guia Cirúrgico em Boca" class="gallery-img" />
+          </div>
+          <div class="gallery-info">
+            <h4>02. Estabilidade em Boca</h4>
+            <p>Encaixe perfeitamente passivo sobre os dentes remanescentes, garantindo zero desvio durante a instrumentação e inserção do implante.</p>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-img-wrapper">
+            <img src="planejamento-caso-real.jpg" alt="Planejamento Virtual vs Radiografia Pós-Operatória" class="gallery-img" />
+          </div>
+          <div class="gallery-info">
+            <h4>03. Planejado vs. Executado</h4>
+            <p>Comparativo real: Em cima, a simulação 3D do planejamento virtual. Embaixo, a radiografia pós-operatória mostrando o implante na exata posição planejada.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -397,7 +383,7 @@
       </div>
       <div class="proof-numbers">
         <div class="proof-num-item">
-          <span class="proof-num">+100</span>
+          <span class="proof-num">+500</span>
           <span class="proof-num-label">Casos Planejados</span>
         </div>
         <div class="proof-num-item">
