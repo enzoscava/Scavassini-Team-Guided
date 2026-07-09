@@ -398,6 +398,692 @@
     </div>
   </section>
 
+  <!-- =====================================================================
+       SEÇÃO: CURSOS & LOCAÇÃO DE KIT
+       ✦ Para alterar o link do WhatsApp → procure "wa.me" no HTML abaixo.
+       ✦ Para alterar cores → edite as variáveis --stg-* no bloco :root.
+       ✦ Todo CSS está na tag <style> para embed No-Code independente.
+  ====================================================================== -->
+  <style>
+    /* =================================================================
+       VARIÁVEIS DE COR — EDITE AQUI PARA PERSONALIZAR
+       ================================================================= */
+    :root {
+      /* ── Cor de destaque principal (verde-neon do logo STG) */
+      --stg-accent:       #00CC8A;
+      --stg-accent-soft:  rgba(0, 204, 138, 0.12);
+      --stg-accent-glow:  rgba(0, 204, 138, 0.25);
+
+      /* ── Azul secundário (para badges e destaques secundários) */
+      --stg-blue:         #4A8AFF;
+      --stg-blue-soft:    rgba(32, 96, 232, 0.12);
+
+      /* ── Dourado para o bloco premium de locação */
+      --stg-gold:         #F5A623;
+      --stg-gold-soft:    rgba(245, 166, 35, 0.10);
+      --stg-gold-border:  rgba(245, 166, 35, 0.35);
+
+      /* ── Fundos */
+      --stg-section-bg:   #060609;
+      --stg-card-bg:      rgba(255, 255, 255, 0.035);
+      --stg-card-border:  rgba(255, 255, 255, 0.07);
+    }
+
+    /* =================================================================
+       SEÇÃO PRINCIPAL
+       ================================================================= */
+    .stg-cursos {
+      background: var(--stg-section-bg);
+      padding: 120px 0 110px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glow radial decorativo atrás do título */
+    .stg-cursos::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(0, 204, 138, 0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .stg-cursos .container { position: relative; z-index: 1; }
+
+    /* =================================================================
+       CABEÇALHO — Super Promessa
+       ================================================================= */
+    .stg-header {
+      text-align: center;
+      margin-bottom: 72px;
+      max-width: 820px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stg-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.55);
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    .stg-eyebrow::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--stg-accent);
+      border-radius: 50%;
+    }
+
+    .stg-main-title {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.1rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .stg-main-title .stg-highlight {
+      background: linear-gradient(120deg, #fff 5%, var(--stg-accent) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stg-main-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.06rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.8;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .stg-main-sub strong { color: rgba(255, 255, 255, 0.85); font-weight: 600; }
+
+    /* =================================================================
+       SUB-HEADER DOS CURSOS
+       ================================================================= */
+    .stg-sub-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .stg-sub-title {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .stg-sub-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.92rem;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    /* =================================================================
+       GRID DE CARDS (2 colunas no desktop)
+       ================================================================= */
+    .stg-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    /* =================================================================
+       CARD
+       ================================================================= */
+    .stg-card {
+      background: var(--stg-card-bg);
+      border: 1px solid var(--stg-card-border);
+      border-radius: 22px;
+      padding: 40px 36px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stg-card:hover {
+      border-color: rgba(0, 204, 138, 0.35);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(0, 204, 138, 0.08);
+    }
+
+    /* Linha brilhante no topo ao hover */
+    .stg-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--stg-accent-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .stg-card:hover::before { opacity: 1; }
+
+    /* ── Ícone + Badge em linha */
+    .stg-card-top {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .stg-card-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .stg-card-icon svg {
+      width: 26px; height: 26px;
+    }
+
+    .stg-card-icon.online {
+      background: var(--stg-blue-soft);
+      color: var(--stg-blue);
+    }
+
+    .stg-card-icon.presencial {
+      background: var(--stg-accent-soft);
+      color: var(--stg-accent);
+    }
+
+    /* Badge de modalidade */
+    .stg-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 14px;
+      border-radius: 100px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .stg-badge.online {
+      background: var(--stg-blue-soft);
+      color: var(--stg-blue);
+      border: 1px solid rgba(74, 138, 255, 0.25);
+    }
+
+    .stg-badge.presencial {
+      background: var(--stg-accent-soft);
+      color: var(--stg-accent);
+      border: 1px solid rgba(0, 204, 138, 0.25);
+    }
+
+    .stg-card-title {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .stg-card-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.96rem;
+      color: rgba(255, 255, 255, 0.58);
+      line-height: 1.78;
+    }
+
+    .stg-card-divider {
+      width: 100%; height: 1px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Lista de benefícios */
+    .stg-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .stg-list li {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.68);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .stg-list li .check {
+      color: var(--stg-accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* =================================================================
+       BLOCO DE LOCAÇÃO DE KIT — DESTAQUE PREMIUM
+       ================================================================= */
+    .stg-locacao {
+      background: var(--stg-gold-soft);
+      border: 1.5px solid var(--stg-gold-border);
+      border-radius: 22px;
+      padding: 42px 40px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Glow decorativo */
+    .stg-locacao::before {
+      content: '';
+      position: absolute;
+      left: -60px; top: 50%;
+      transform: translateY(-50%);
+      width: 250px; height: 250px;
+      background: radial-gradient(circle, rgba(245, 166, 35, 0.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .stg-locacao-icon {
+      width: 58px; height: 58px;
+      background: rgba(245, 166, 35, 0.15);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stg-locacao-content { position: relative; z-index: 1; }
+
+    .stg-locacao-eyebrow {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stg-gold);
+      margin-bottom: 8px;
+    }
+
+    .stg-locacao-title {
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .stg-locacao-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.62);
+      line-height: 1.78;
+      max-width: 700px;
+    }
+
+    .stg-locacao-desc strong { color: var(--stg-gold); font-weight: 600; }
+
+    /* Chips de benefícios dentro do bloco de locação */
+    .stg-locacao-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stg-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(245, 166, 35, 0.08);
+      border: 1px solid rgba(245, 166, 35, 0.2);
+    }
+
+    .stg-chip .chip-icon { font-size: 0.9rem; }
+
+    /* =================================================================
+       INDICADORES DE CONFIANÇA
+       ================================================================= */
+    .stg-trust {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding: 28px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .stg-trust-item {
+      text-align: center;
+    }
+
+    .stg-trust-num {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #fff;
+      display: block;
+      line-height: 1.2;
+    }
+
+    .stg-trust-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 600;
+    }
+
+    /* =================================================================
+       CTA PRINCIPAL
+       ================================================================= */
+    .stg-cta-area { text-align: center; }
+
+    .stg-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #25D366 0%, #1DAA52 100%);
+      color: #fff;
+      font-family: 'Outfit', 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1.02rem;
+      letter-spacing: 0.01em;
+      padding: 20px 48px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.30);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: stg-pulse 3s ease-in-out infinite;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .stg-cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 44px rgba(37, 211, 102, 0.45);
+      animation: none;
+    }
+
+    .stg-cta-btn svg { width: 22px; height: 22px; flex-shrink: 0; }
+
+    @keyframes stg-pulse {
+      0%,100% { box-shadow: 0 6px 30px rgba(37,211,102,.30), 0 0 0 0 rgba(37,211,102,.18); }
+      50%     { box-shadow: 0 6px 30px rgba(37,211,102,.30), 0 0 0 16px rgba(37,211,102,0); }
+    }
+
+    .stg-cta-note {
+      margin-top: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    /* =================================================================
+       RESPONSIVIDADE
+       ================================================================= */
+    @media (max-width: 992px) {
+      .stg-cards-grid { gap: 20px; }
+      .stg-locacao { padding: 32px 28px; gap: 22px; }
+      .stg-trust { gap: 32px; }
+    }
+
+    @media (max-width: 768px) {
+      .stg-cursos { padding: 80px 0 72px; }
+
+      .stg-cards-grid { grid-template-columns: 1fr; gap: 18px; }
+      .stg-card { padding: 30px 26px 28px; }
+
+      .stg-locacao {
+        grid-template-columns: 1fr;
+        padding: 28px 24px;
+        gap: 16px;
+      }
+
+      .stg-trust {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .stg-cta-btn {
+        width: 100%;
+        padding: 18px 24px;
+        font-size: 0.95rem;
+      }
+
+      .stg-main-title { font-size: clamp(1.7rem, 7vw, 2.3rem); }
+    }
+
+    @media (max-width: 480px) {
+      .stg-main-title { font-size: clamp(1.5rem, 8vw, 1.9rem); }
+      .stg-main-sub { font-size: 0.95rem; }
+      .stg-locacao-chips { gap: 8px; }
+      .stg-chip { font-size: 0.72rem; padding: 5px 12px; }
+    }
+  </style>
+
+  <!-- ===================== SEÇÃO: CURSOS & LOCAÇÃO ===================== -->
+  <section class="stg-cursos" id="cursos" aria-labelledby="stg-titulo">
+    <div class="container">
+
+      <!-- ── SUPER PROMESSA (Headline + Subtítulo) ──────────────── -->
+      <header class="stg-header">
+        <div class="stg-eyebrow">Capacitação + Locação de Kits</div>
+
+        <h2 class="stg-main-title" id="stg-titulo">
+          Domine a Cirurgia Guiada e Viabilize seus Casos
+          <span class="stg-highlight">sem Precisar Comprar Equipamentos Caros.</span>
+        </h2>
+
+        <p class="stg-main-sub">
+          Capacitação de excelência (<strong>Online e Presencial</strong>) e
+          <strong>locação de kits cirúrgicos</strong> para você focar no que
+          importa: o sucesso do procedimento.
+        </p>
+      </header>
+
+      <!-- ── Sub-header dos cursos ─────────────────────────────── -->
+      <div class="stg-sub-header">
+        <h3 class="stg-sub-title">Escolha o formato ideal para você</h3>
+        <p class="stg-sub-desc">Cursos desenhados para quem quer aplicar, não só aprender.</p>
+      </div>
+
+      <!-- ── GRID DE CARDS ──────────────────────────────────────── -->
+      <div class="stg-cards-grid">
+
+        <!-- ── CARD 1: CURSO ONLINE ────── -->
+        <article class="stg-card" id="stg-curso-online">
+          <div class="stg-card-top">
+            <div class="stg-card-icon online" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </div>
+            <span class="stg-badge online">● Online</span>
+          </div>
+
+          <h4 class="stg-card-title">Curso Online</h4>
+
+          <p class="stg-card-body">
+            Flexibilidade total. Domine o planejamento e a teoria das técnicas
+            guiadas com aulas detalhadas para assistir <strong style="color:#fff;">de onde e quando quiser.</strong>
+          </p>
+
+          <div class="stg-card-divider"></div>
+
+          <ul class="stg-list">
+            <li><span class="check">✓</span> Acesso vitalício ao conteúdo completo</li>
+            <li><span class="check">✓</span> Aulas gravadas em altíssima qualidade</li>
+            <li><span class="check">✓</span> Estude no seu ritmo, sem pressão</li>
+            <li><span class="check">✓</span> Certificado de conclusão digital</li>
+            <li><span class="check">✓</span> Suporte direto para dúvidas de casos</li>
+          </ul>
+        </article>
+
+        <!-- ── CARD 2: CURSO PRESENCIAL ──── -->
+        <article class="stg-card" id="stg-curso-presencial">
+          <div class="stg-card-top">
+            <div class="stg-card-icon presencial" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <span class="stg-badge presencial">● Presencial</span>
+          </div>
+
+          <h4 class="stg-card-title">Curso Presencial</h4>
+
+          <p class="stg-card-body">
+            Hands-on imersivo. Vivência clínica real, com <strong style="color:#fff;">mentoria lado a lado</strong>
+            para garantir sua segurança na execução do planejamento.
+          </p>
+
+          <div class="stg-card-divider"></div>
+
+          <ul class="stg-list">
+            <li><span class="check">✓</span> Prática hands-on supervisionada</li>
+            <li><span class="check">✓</span> Turmas reduzidas e exclusivas</li>
+            <li><span class="check">✓</span> Interação direta com nossos especialistas</li>
+            <li><span class="check">✓</span> Certificado físico + digital de imersão</li>
+            <li><span class="check">✓</span> Networking com outros implantodontistas</li>
+          </ul>
+        </article>
+
+      </div><!-- /stg-cards-grid -->
+
+      <!-- ── BLOCO DE LOCAÇÃO DE KIT (Destaque Premium) ───────── -->
+      <div class="stg-locacao" role="note" aria-label="Serviço exclusivo de locação de kit cirúrgico">
+
+        <!-- Ícone — troque o emoji por qualquer SVG ou ícone -->
+        <div class="stg-locacao-icon" aria-hidden="true">🔧</div>
+
+        <div class="stg-locacao-content">
+          <span class="stg-locacao-eyebrow">O Grande Diferencial</span>
+
+          <h3 class="stg-locacao-title">
+            Aluguel de Kit Cirúrgico
+            <span style="color: var(--stg-gold);">(Exclusivo São Paulo — Capital)</span>
+          </h3>
+
+          <p class="stg-locacao-desc">
+            Não deixe o <strong>alto custo dos instrumentais</strong> travar sua
+            evolução. Oferecemos o serviço de locação do kit cirúrgico completo
+            para nossos clientes de São Paulo. Você estuda, planeja conosco e
+            <strong>aluga o kit apenas quando for operar</strong>. Reduza seus
+            custos e aumente sua rentabilidade.
+          </p>
+
+          <!-- Chips de benefícios rápidos -->
+          <div class="stg-locacao-chips">
+            <span class="stg-chip"><span class="chip-icon">💰</span> Sem investimento inicial</span>
+            <span class="stg-chip"><span class="chip-icon">📦</span> Kit completo e esterilizado</span>
+            <span class="stg-chip"><span class="chip-icon">📅</span> Alugue só quando operar</span>
+            <span class="stg-chip"><span class="chip-icon">📈</span> Mais margem de lucro</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── INDICADORES DE CONFIANÇA ─────────────────────────── -->
+      <div class="stg-trust">
+        <div class="stg-trust-item">
+          <span class="stg-trust-num">+500</span>
+          <span class="stg-trust-label">Alunos Capacitados</span>
+        </div>
+        <div class="stg-trust-item">
+          <span class="stg-trust-num">98%</span>
+          <span class="stg-trust-label">Satisfação</span>
+        </div>
+        <div class="stg-trust-item">
+          <span class="stg-trust-num">24h</span>
+          <span class="stg-trust-label">Suporte Dedicado</span>
+        </div>
+      </div>
+
+      <!-- ── CTA PRINCIPAL ────────────────────────────────────── -->
+      <div class="stg-cta-area">
+        <!--
+          ★ LINK DO WHATSAPP — altere o link abaixo.
+            Formato: https://wa.me/55SEUNUMERO
+            Ou link personalizado: https://wa.me/message/SEULINK
+        -->
+        <a
+          href="https://wa.me/message/H7ZGP77TNGO3F1"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="stg-cta-btn"
+          id="stg-cta-whatsapp"
+          aria-label="Falar com um consultor pelo WhatsApp para conhecer as soluções"
+        >
+          <!-- Ícone WhatsApp -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+          </svg>
+          Falar com um Consultor e Conhecer as Soluções
+        </a>
+
+        <p class="stg-cta-note">Respondemos em menos de 1 hora durante o horário comercial ⚡</p>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+  <!-- ===================== FIM: CURSOS & LOCAÇÃO ===================== -->
+
+
+
   <!-- ===================== CONTATO / SUPORTE ===================== -->
   <section class="contact-section section-pad" id="contato">
     <div class="container">
